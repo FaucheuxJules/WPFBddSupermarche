@@ -32,6 +32,7 @@ namespace MetierBdd
             }
             dr.Close();
             return mesSecteurs;
+            //Yass
         }
         public List<Rayon> GetAllRayonByNumSecteur(int numSecteur)
         {
