@@ -1,0 +1,39 @@
+﻿<Window x:Class="WPFBddSupermarche.frmRayonSecteur"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFBddSupermarche"
+        mc:Ignorable="d"
+        Title="frmRayonSecteur" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Rayon/Secteur" Grid.Row="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+        <ComboBox Name="cboSecteur" Grid.Row="1" SelectionChanged="CboSecteur_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock VerticalAlignment="Center" Text="{Binding NumS}"></TextBlock>
+                        <TextBlock VerticalAlignment="Center" Text="{Binding NomS}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ListBox  Grid.Row="2" x:Name="lstRayonSecteur">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock VerticalAlignment="Center" Width="50" Text="{Binding NumR}"></TextBlock>
+                        <TextBlock VerticalAlignment="Center" Width="50" Text="{Binding NomR}"></TextBlock>
+                        
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
