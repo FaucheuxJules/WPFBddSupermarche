@@ -33,6 +33,11 @@ namespace WPFBddSupermarche
         }
         private void BtnEnregistrer_Click(object sender, RoutedEventArgs e)
         {
+            gstBdd.EnregistrerEmploye(Convert.ToInt16(txtnumEmploye.Text), txtnomEmploye.Text);
+            lstEmploye.ItemsSource = null;
+            lstEmploye.ItemsSource = gstBdd.getAllEmploye();
+            txtnumEmploye.Text = gstBdd.GetLastNumCateg().ToString();
+            txtnomEmploye.Text = "";
 
         }
     }

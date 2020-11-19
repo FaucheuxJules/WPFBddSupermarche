@@ -49,6 +49,37 @@ namespace MetierBdd
             dr.Close();
             return mesRayons;
         }
+        public List<Employe> getAllEmploye()
+        {
+            List<Employe> mesEmployes = new List<Employe>();
+            cmd = new MySqlCommand("Select numE, prenomE from employe", cnx);
+            dr = cmd.ExecuteReader();
 
+            while (dr.Read())
+            {
+                Employe unEmploye = new Employe(Convert.ToInt16(dr[0]), dr[1].ToString());
+                mesEmployes.Add(unEmploye);
+            }
+            dr.Close();
+            return mesEmployes;
+            
+        }
+
+        public int GetLastNumCateg()
+        {
+            int max;
+            cmd = new MySqlCommand("select max(numE) from employe", cnx);
+            dr = cmd.ExecuteReader();
+            dr.Read();
+            max = Convert.ToInt16(dr[0].ToString()) + 1;
+
+            return max;
+        }
+        public void EnregistrerEmploye(int numE, string prenomE)
+        {
+            cmd = new MySqlCommand("insert into employe VALUES ("+numE+",' "+prenomE+"')",cnx);
+            cmd.ExecuteNonQuery();
+
+        }
     }
 }
